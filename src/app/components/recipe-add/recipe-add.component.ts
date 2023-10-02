@@ -1,39 +1,112 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from 'src/app/services/data.service';
 import { Recipe } from 'src/app/model/recipe';
 
+
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocompleteModule,
+} from '@angular/material/autocomplete';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { MatIconModule } from '@angular/material/icon';
+import { NgFor, AsyncPipe } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+
 @Component({
   selector: 'app-recipe-add',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    NgFor,
+    MatIconModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+  ],
+
   templateUrl: './recipe-add.component.html',
-  styleUrls: ['./recipe-add.component.scss']
+  styleUrls: ['./recipe-add.component.scss'],
 })
 export class RecipeAddComponent {
+  
+  recipe?: Recipe;
+  newRecipe: Recipe = {
+    name: '',
+    createdAt: 0,
+    ingredients: [],
+    description: '',
+    category: 0,
+    url: '',
+  };
 
-  constructor(private data: DataService) { }
+  constructor(private dataServ: DataService) {
+    this.filteredIngredients = this.fruitCtrl.valueChanges.pipe(
+      startWith(null),
+      map((fruit: string | null) =>
+        fruit ? this._filter(fruit) : this.allingredients.slice()
+      )
+    );
+  }
 
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  fruitCtrl = new FormControl('');
+  filteredIngredients: Observable<string[]>;
+  ingredients: string[] = ['Uova'];
+  allingredients: string[] = ['Uova', 'Latte', 'Burro', 'Olio EVO', 'Pollo'];
 
+  @ViewChild('fruitInput') fruitInput?: ElementRef<HTMLInputElement>;
+
+  announcer = inject(LiveAnnouncer);
 
   submitRecipe() {
+    this.newRecipe.ingredients = [...this.ingredients];
 
-    const newRecipe: Recipe = {
-      createdAt: 1696234492000,
-      url: "https://blog.giallozafferano.it/dulcisinforno/wp-content/uploads/2021/01/Pasta-cacio-e-pepe-2634.jpg",
-      name: "spaghetti cacio e pepe",
-      ingredients: [
-        "spaghetti",
-        "pepe",
-        "olio EVO",
-        "pecorino romano"
-      ],
-      description: "gratta il pecorino",
-      category: 1,
+    this.dataServ
+      .postRecipe(this.newRecipe)
+      .subscribe((addedRecipe) => (this.recipe = addedRecipe));
+  }
 
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+    if (value) {
+      this.ingredients.push(value);
     }
-    this.data.postRecipe(newRecipe).subscribe(addedRecipe=>console.log(addedRecipe))
+    event.chipInput!.clear();
+
+    this.fruitCtrl.setValue(null);
+  }
+
+  remove(fruit: string): void {
+    const index = this.ingredients.indexOf(fruit);
+
+    if (index >= 0) {
+      this.ingredients.splice(index, 1);
+
+      this.announcer.announce(`Removed ${fruit}`);
+    }
+  }
+
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.ingredients.push(event.option.viewValue);
+    this.fruitInput!.nativeElement.value = '';
+    this.fruitCtrl.setValue(null);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.allingredients.filter((fruit) =>
+      fruit.toLowerCase().includes(filterValue)
+    );
   }
 }
-
-

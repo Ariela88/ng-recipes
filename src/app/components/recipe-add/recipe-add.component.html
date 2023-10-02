@@ -1,1 +1,41 @@
-<button (click)="submitRecipe()"> Invia la Ricetta </button>
+<div>
+    <form>
+        <label for="name">Nome:</label>
+        <input [(ngModel)]="newRecipe.name" type="text" name="name">
+        
+        <label for="description">Procedimento:</label>
+        <input [(ngModel)]="newRecipe.description" type="text" name="description">
+        
+        <label for="url">Foto:</label>
+        <input [(ngModel)]="newRecipe.url" type="text" name="url">
+        
+        <label for="category">Categoria:</label>
+        <input [(ngModel)]="newRecipe.category" type="number" name="category">
+        
+        <mat-form-field class="example-chip-list">
+            <mat-label>Ingredienti</mat-label>
+            
+            <mat-chip-grid #chipGrid aria-label="Selezione degli ingredienti">
+                <mat-chip-row *ngFor="let ingredient of ingredients" (removed)="remove(ingredient)">
+                    {{ ingredient }}
+                    <button matChipRemove [attr.aria-label]="'Rimuovi ' + ingredient">
+                        <mat-icon>cancel</mat-icon>
+                    </button>
+                </mat-chip-row>
+            </mat-chip-grid>
+            
+            <input placeholder="Nuovo Ingrediente..." #fruitInput [formControl]="fruitCtrl"
+                [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)"/>
+                
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let fruit of filteredIngredients | async" [value]="fruit">
+                    {{ fruit }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+    
+    <button (click)="submitRecipe()">Invia la ricetta</button>  
+</div>
