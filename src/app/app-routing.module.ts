@@ -10,10 +10,10 @@ const routes: Routes = [
 
 {path: 'list', component: RecipesListComponent},
 {path: '', redirectTo: 'list',pathMatch:'full'},
+{ path: 'favourites', component: FavouritesComponent },
 {path: 'new', loadComponent: ()=> import('./components/recipe-add/recipe-add.component').then(cmp => cmp.RecipeAddComponent)},
 {path: 'recipe/:id', loadComponent: ()=> import('./components/recipe-detail/recipe-detail.component').then(cmp => cmp.RecipeDetailComponent)},
 {path: '**', component: RecipeNotFoundComponent},
-{path: 'favourites', component: FavouritesComponent},
 
 
 

@@ -25,7 +25,7 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    FormsModule,
+    
     MatFormFieldModule,
     MatChipsModule,
     NgFor,
@@ -50,6 +50,7 @@ export class RecipeAddComponent {
     description: '',
     category: 0,
     url: '',
+    isFavourite:false
   };
 
   constructor(private dataServ: DataService, private router:Router) {

@@ -19,7 +19,7 @@
   }
 
   mat-icon{
-    color: white;
+    color: black;
   }
 
   mat-card-actions{
@@ -28,3 +28,11 @@
     justify-content: center;
     width: 100%;
   }
+
+  
+button{
+
+  color: black !important;
+  background-color: transparent;
+  border: none;
+}
