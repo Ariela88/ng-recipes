@@ -1,4 +1,4 @@
-<div *ngIf="recipeData" class="card">
+<div *ngIf="recipeData" class="card" [ngStyle]="{backgroundColor: bColor}">
     <mat-card >
       <mat-card-header>
 
@@ -10,6 +10,10 @@
       <mat-card-actions>
           <button (click)="select()" mat-icon-button>
            <mat-icon> info </mat-icon>
+          </button>
+          <button (click)="storage.toggleFavourites(recipeData)">
+            <mat-icon *ngIf="!storage.isFavourite(recipeData)">favorite</mat-icon>
+            <mat-icon *ngIf="storage.isFavourite(recipeData)">heart_broken</mat-icon>
           </button>
 
 

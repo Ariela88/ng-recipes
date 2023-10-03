@@ -44,7 +44,8 @@ export class RecipeDetailComponent implements OnInit{
       ingredients: [],
       description: '',
       category: 0,
-      url: ''
+      url: '',
+      isFavourite:false
     };
 
   isEditing = false;

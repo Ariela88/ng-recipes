@@ -6,6 +6,7 @@ export interface Recipe {
   ingredients?: string[]
   description: string
   category: number
-  id?: string
+  id?: string;
+  isFavourite:boolean;
 
 }

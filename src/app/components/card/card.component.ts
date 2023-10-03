@@ -6,6 +6,7 @@ import { Recipe } from 'src/app/model/recipe';
 import {RouterModule } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import { CategoryToStringPipe } from 'src/app/pipes/category-to-string.pipe';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-card',
@@ -22,10 +23,12 @@ import { CategoryToStringPipe } from 'src/app/pipes/category-to-string.pipe';
 })
 export class CardComponent {
 
-  constructor(){}
+  constructor(public storage:StorageService){}
 
   @Input() recipeData?: Recipe;
   @Output() recipeSelected = new EventEmitter<Recipe>();
+  @Input() isFavourite: boolean = false;
+  @Input() bColor: string = 'white';
 
   select(){
     this.recipeSelected.emit(this.recipeData);

@@ -4,6 +4,7 @@ import { RecipesListComponent } from './components/recipes-list/recipes-list.com
 import { RecipeDetailComponent } from './components/recipe-detail/recipe-detail.component';
 import { RecipeAddComponent } from './components/recipe-add/recipe-add.component';
 import { RecipeNotFoundComponent } from './components/recipe-not-found/recipe-not-found.component';
+import { FavouritesComponent } from './components/favourites/favourites.component';
 
 const routes: Routes = [
 
@@ -12,6 +13,7 @@ const routes: Routes = [
 {path: 'new', loadComponent: ()=> import('./components/recipe-add/recipe-add.component').then(cmp => cmp.RecipeAddComponent)},
 {path: 'recipe/:id', loadComponent: ()=> import('./components/recipe-detail/recipe-detail.component').then(cmp => cmp.RecipeDetailComponent)},
 {path: '**', component: RecipeNotFoundComponent},
+{path: 'favourites', component: FavouritesComponent},
 
 
 
