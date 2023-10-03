@@ -1,10 +1,155 @@
 .card {
+
+width: 600px;
+    display: flex;
+    height: 700px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+  }
+
+  img{
+    width: 100%;
+  }
+
+  .header-image {
+
+    background-size: contain;
+    background-position: center;
+
+
+  }
+  mat-card-title{
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Satisfy', cursive;
+  }
+
+
+li{
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+
+  ul{
+    padding: 0;
+  }
+
+  button{
+    background-color: transparent !important;
+    color: black !important;
+    justify-self: flex-end;
+  }
+
+  .card-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+  }
+
+  .card {
     max-width: 400px;
   }
-  
+
   .header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
 
-  
+  .header{
+
+    width: 100%;
+    display: flex;
+    justify-content: center ;
+    margin-top: 50px;
+
+  }
+
+  h1{
+    font-size: 60px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  .example-chip-list {
+    width: 100%;
+  }
+
+  .mat-card-actions span{
+    background-color: black !important;
+  }
+
+  .form-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+
+  }
+
+  mat-card{
+    background-color: burlywood !important;
+  }
+
+  .form{
+    width: 500px;
+    background-color: darkgrey;
+    padding: 32px;
+    height: 600px;
+
+  }
+
+  p{
+    text-align: center;
+  }
+
+
+
+  .procediment{
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .procediment input{
+    height: 100px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  section {
+    display: table;
+  }
+
+  .example-button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+
+  .example-button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+
+  .example-flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .example-button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }

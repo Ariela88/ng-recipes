@@ -1,9 +1,9 @@
-<div *ngIf="recipeData">
-    <mat-card class="card">
+<div *ngIf="recipeData" class="card">
+    <mat-card >
       <mat-card-header>
-        <div mat-card-avatar class="header-image"></div>
+
         <mat-card-title>{{recipeData.name}}</mat-card-title>
-        <mat-card-subtitle>{{recipeData.category}}</mat-card-subtitle>
+
       </mat-card-header>
       <img mat-card-image src="{{recipeData.url}}" alt="">
       <mat-card-content>
@@ -14,15 +14,15 @@
             <span *ngFor="let recipe of recipeData.ingredients"></span>
            </mat-card-content>
       </div>
-  
+
       <mat-card-actions>
-          <button (click)="select()">
-            Dettagli
+          <button (click)="select()" mat-icon-button>
+           <mat-icon> info </mat-icon>
           </button>
-  
-  
-  
+
+
+
       </mat-card-actions>
     </mat-card>
-  
+
   </div>

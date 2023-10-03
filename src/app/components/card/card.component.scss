@@ -1,8 +1,19 @@
 .card {
+  width: 400px;
     max-width: 400px;
   }
-  
+
   .header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+
     background-size: cover;
+  }
+
+  mat-card{
+    background-color: burlywood !important;
+  }
+
+  mat-card-title{
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Satisfy', cursive;
   }

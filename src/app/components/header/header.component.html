@@ -1,13 +1,20 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button>
-    <mat-icon>menu</mat-icon>
+  <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/new">
+    Aggiungi ricetta
   </button>
-  <span>Angular Recipes</span>
+  <button mat-menu-item routerLink="/new">
+    Categoria
+  </button>
+  <button mat-menu-item>Vai alla pagina dei preferiti</button>
+</mat-menu>
+  <span routerLink="/list" class="home-link">Angular Recipes</span>
   <span class="spacer"></span>
   <button mat-icon-button>
     <mat-icon>favorite</mat-icon>
   </button>
-  <button mat-icon-button>
-    <mat-icon>share</mat-icon>
-  </button>
+
 </mat-toolbar>
+
+

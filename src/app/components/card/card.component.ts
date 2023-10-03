@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { Recipe } from 'src/app/model/recipe';
 import {RouterModule } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-card',
@@ -11,7 +12,9 @@ import {RouterModule } from '@angular/router';
   imports: [CommonModule,
             MatButtonModule,
             MatCardModule,
-            RouterModule],
+            RouterModule,
+            MatIconModule
+          ],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })

@@ -28,7 +28,7 @@ export class DataService {
    return this.http.delete<Recipe>(this.DB_URL + '/' + recipeId);
   }
   updateRecipe(id: string, updatedRecipe: Recipe): Observable<Recipe> {
-    const url = `${this.DB_URL}/recipes/${id}`;
+    const url = `${this.DB_URL}/${id}`;
     return this.http.put<Recipe>(url, updatedRecipe);
   }
 }

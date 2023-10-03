@@ -4,12 +4,14 @@ import { DataService } from 'src/app/services/data.service';
 import { Recipe } from 'src/app/model/recipe';
 import { CardComponent } from '../card/card.component';
 import { Router } from '@angular/router';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-recipes-list',
   standalone: true,
   imports: [CommonModule,
-            CardComponent
+            CardComponent,
+            MatSidenavModule
             ],
   templateUrl: './recipes-list.component.html',
   styleUrls: ['./recipes-list.component.scss']

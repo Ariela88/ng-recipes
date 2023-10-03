@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { DataService } from 'src/app/services/data.service';
 import { Recipe } from 'src/app/model/recipe';
-
-
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,13 +32,15 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
     MatAutocompleteModule,
     ReactiveFormsModule,
     AsyncPipe,
+    MatInputModule,
+    MatButtonModule
   ],
 
   templateUrl: './recipe-add.component.html',
   styleUrls: ['./recipe-add.component.scss'],
 })
 export class RecipeAddComponent {
-  
+
   recipe?: Recipe;
   newRecipe: Recipe = {
     name: '',
