@@ -7,9 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from "./components/header/header.component";
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+
     ],
     providers: [],
     bootstrap: [AppComponent],

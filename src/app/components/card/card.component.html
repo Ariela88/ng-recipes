@@ -3,17 +3,9 @@
       <mat-card-header>
 
         <mat-card-title>{{recipeData.name}}</mat-card-title>
-
+<mat-card-subtitle> {{recipeData.category | categoryToString}}</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image src="{{recipeData.url}}" alt="">
-      <mat-card-content>
-        <p>{{recipeData.description}}</p>
-      </mat-card-content>
-      <div>
-           <mat-card-content>
-            <span *ngFor="let recipe of recipeData.ingredients"></span>
-           </mat-card-content>
-      </div>
 
       <mat-card-actions>
           <button (click)="select()" mat-icon-button>

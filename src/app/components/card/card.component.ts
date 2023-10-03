@@ -5,6 +5,7 @@ import {MatCardModule} from '@angular/material/card';
 import { Recipe } from 'src/app/model/recipe';
 import {RouterModule } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
+import { CategoryToStringPipe } from 'src/app/pipes/category-to-string.pipe';
 
 @Component({
   selector: 'app-card',
@@ -13,7 +14,8 @@ import {MatIconModule} from '@angular/material/icon';
             MatButtonModule,
             MatCardModule,
             RouterModule,
-            MatIconModule
+            MatIconModule,
+            CategoryToStringPipe
           ],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']

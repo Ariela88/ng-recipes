@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NgFor, AsyncPipe } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-add',
@@ -51,7 +52,7 @@ export class RecipeAddComponent {
     url: '',
   };
 
-  constructor(private dataServ: DataService) {
+  constructor(private dataServ: DataService, private router:Router) {
     this.filteredIngredients = this.fruitCtrl.valueChanges.pipe(
       startWith(null),
       map((fruit: string | null) =>
@@ -76,6 +77,7 @@ export class RecipeAddComponent {
     this.dataServ
       .postRecipe(this.newRecipe)
       .subscribe((addedRecipe) => (this.recipe = addedRecipe));
+      this.router.navigateByUrl('/list')
   }
 
   add(event: MatChipInputEvent): void {

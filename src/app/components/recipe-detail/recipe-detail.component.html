@@ -1,30 +1,21 @@
 <div *ngIf="recipe && !isEditing" class="card-container">
-    <mat-card class="card">
-      <mat-card-header>
-       <mat-card-title>{{ recipe.name }}</mat-card-title>
 
-      </mat-card-header>
-      <img mat-card-image src="{{ recipe.url }}" alt="">
-      <mat-card-content>
-        <p>{{ recipe.description }}</p>
-      </mat-card-content>
+  <div class="img-container"> <img src="{{recipe.url}}" alt=""></div>
+  <div class="title-container"> <h1> {{recipe.name}}</h1></div>
+    <ul>
+      <li *ngFor="let ing of recipe.ingredients">{{ing}} </li>
+    </ul>
+    <div class="text-container">
+      <p>{{recipe.description}}</p>
+    </div>
 
-
-      <div *ngIf="recipe.ingredients && recipe.ingredients.length > 0" class="ingredients-list">
-        <mat-card-content>
-          <p><strong>Ingredienti:</strong></p>
-          <ul>
-            <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient }}</li>
-          </ul>
-        </mat-card-content>
-      </div>
-
+<div class="btn-container">
       <mat-card-actions>
-        <button (click)="delete(recipe.id!)" mat-button>Elimina ricetta</button>
+        <button (click)="delete(recipe.id!)" mat-button color="primary">Elimina ricetta</button>
         <button (click)="startEditing()" mat-button>Modifica ricetta</button>
       </mat-card-actions>
-    </mat-card>
-</div>
+  </div>
+ </div>
 
 <div *ngIf="recipe && isEditing">
 

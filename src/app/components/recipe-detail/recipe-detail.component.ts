@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
+import { CategoryToStringPipe } from 'src/app/pipes/category-to-string.pipe';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -28,7 +29,8 @@ import { MatInputModule } from '@angular/material/input';
             MatAutocompleteModule,
             ReactiveFormsModule,
             MatInputModule,
-            MatButtonModule
+            MatButtonModule,
+            CategoryToStringPipe
           ],
   templateUrl: './recipe-detail.component.html',
   styleUrls: ['./recipe-detail.component.scss']
