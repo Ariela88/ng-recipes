@@ -22,12 +22,19 @@ export class RecipesListComponent implements OnInit{
 
   constructor(private dataServ: DataService, public route: Router){}
 
-  openDetail(recipe: Recipe){
-    this.route.navigateByUrl('/recipe/' + recipe.id);
-    console.log(recipe)
-  }
+  
 
   ngOnInit(): void {
     this.dataServ.getAllRecipes().subscribe(recipe => this.recipes = recipe);
+  }
+  
+  
+  
+  
+  
+  
+  openDetail(recipe: Recipe){
+    this.route.navigateByUrl('/recipe/' + recipe.id);
+    console.log(recipe)
   }
 }

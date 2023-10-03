@@ -1,33 +1,40 @@
-
-<div class="header"> <h1> Aggiungi una ricetta: </h1></div>
+<div class="header">
+  <h1> Aggiungi una ricetta: </h1>
+</div>
 
 <div class="form-container">
   <form class="form">
-    <p>
+   
       <mat-form-field>
         <mat-label for="name">Nome:</mat-label>
         <input matInput placeholder="Nome ricetta" [(ngModel)]="newRecipe.name" type="text" name="name">
         <mat-icon matSuffix>close</mat-icon>
 
       </mat-form-field>
-    </p>
-    <p>
+    
+
+
+
+  
       <mat-form-field>
         <mat-label for="url">Foto Ricetta:</mat-label>
         <input matInput placeholder="Foto del piatto" [(ngModel)]="newRecipe.url" type="text" name="url">
         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
 
       </mat-form-field>
-    </p>
+    
 
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label for="category">Categoria</mat-label>
-        <input matInput placeholder="Categoria" [(ngModel)]="newRecipe.category" type="number" name="category">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
 
-      </mat-form-field>
-    </p>
+    <mat-form-field>
+      <mat-label>Categoria</mat-label>
+      <mat-select placeholder="Seleziona Categoria" [(ngModel)]="newRecipe.category" name="category">
+        <mat-option *ngFor="let cat of categoryOptions" [value]="cat">
+          {{ cat | categoryToString }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
     <mat-form-field class="example-chip-list">
       <mat-label>Ingredienti</mat-label>
 
@@ -40,7 +47,7 @@
         </mat-chip-row>
       </mat-chip-grid>
 
-      <input placeholder="Nuovo Ingrediente..." #fruitInput [formControl]="fruitCtrl" [matChipInputFor]="chipGrid"
+      <input placeholder="Nuovo Ingrediente..." #fruitInput [formControl]="ingredientCtrl" [matChipInputFor]="chipGrid"
         [matAutocomplete]="auto" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         (matChipInputTokenEnd)="add($event)" />
 
@@ -51,22 +58,16 @@
       </mat-autocomplete>
     </mat-form-field>
     <p class="procediment">
-      <mat-form-field appearance="fill">
-        <mat-label for="description">Procedimento:</mat-label>
-        <input matInput placeholder="Procedimento" [(ngModel)]="newRecipe.description" type="text" name="description">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-
+      <mat-form-field class="example-full-width">
+        <mat-label for="description">Procedimento</mat-label>
+        <textarea matInput [(ngModel)]="newRecipe.description" placeholder="Scrivi qui il procedimento" name="description"></textarea>
       </mat-form-field>
+
     </p>
 
+    <button mat-raised-button (click)="submitRecipe()">Invia</button>
 
   </form>
 
 
-  <section>
-
-    <div class="example-button-row">
-      <button mat-raised-button (click)="submitRecipe()">Invia</button>
-
-
-    </div>
+  

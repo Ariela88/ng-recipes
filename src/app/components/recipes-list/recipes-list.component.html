@@ -1,5 +1,9 @@
 <div class="card-container">
 
 
-    <app-card *ngFor="let recipe of recipes" [recipeData]="recipe" (recipeSelected)="openDetail($event)"></app-card>
-  </div>
+  <app-card *ngFor="let recipe of recipes" [recipeData]="recipe" (recipeSelected)="openDetail($event)">
+
+  </app-card>
+
+
+</div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Recipe } from 'src/app/model/recipe';
 import { StorageService } from 'src/app/services/storage.service';
 import { CardComponent } from '../card/card.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favourites',
@@ -15,11 +16,17 @@ export class FavouritesComponent implements OnInit{
   
   favourites: Recipe[] = [];
 
-  constructor(private storage: StorageService) {}
+  constructor(private storage: StorageService, private route:Router) {}
   ngOnInit(): void {
     this.storage.favouritesSubject.subscribe((arrayOfFavourites) => {
       this.favourites = arrayOfFavourites;
       console.log('preferiti')
     });
   }
+
+  openDetail(recipe: Recipe){
+    this.route.navigateByUrl('/recipe/' + recipe.id);
+    console.log(recipe)
+  }
+
 }

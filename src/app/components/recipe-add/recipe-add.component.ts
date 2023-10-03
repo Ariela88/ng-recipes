@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { DataService } from 'src/app/services/data.service';
 import { Recipe } from 'src/app/model/recipe';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +11,7 @@ import {
   MatAutocompleteModule,
 } from '@angular/material/autocomplete';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,6 +19,7 @@ import { NgFor, AsyncPipe } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Router } from '@angular/router';
+import { CategoryToStringPipe } from 'src/app/pipes/category-to-string.pipe';
 
 @Component({
   selector: 'app-recipe-add',
@@ -25,7 +27,7 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     FormsModule,
-    
+
     MatFormFieldModule,
     MatChipsModule,
     NgFor,
@@ -34,15 +36,18 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     AsyncPipe,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule,
+    CategoryToStringPipe,
   ],
 
   templateUrl: './recipe-add.component.html',
   styleUrls: ['./recipe-add.component.scss'],
 })
 export class RecipeAddComponent {
-
   recipe?: Recipe;
+  value = 'Clear me';
+  categoryOptions: number[] = [0, 1, 2, 3, 4, 5];
   newRecipe: Recipe = {
     name: '',
     createdAt: 0,
@@ -50,25 +55,25 @@ export class RecipeAddComponent {
     description: '',
     category: 0,
     url: '',
-    isFavourite:false
+    isFavourite: false,
   };
 
-  constructor(private dataServ: DataService, private router:Router) {
-    this.filteredIngredients = this.fruitCtrl.valueChanges.pipe(
+  constructor(private dataServ: DataService, private router: Router) {
+    this.filteredIngredients = this.ingredientCtrl.valueChanges.pipe(
       startWith(null),
-      map((fruit: string | null) =>
-        fruit ? this._filter(fruit) : this.allingredients.slice()
+      map((ingredient: string | null) =>
+        ingredient ? this._filter(ingredient) : this.allingredients.slice()
       )
     );
   }
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl('');
+  ingredientCtrl = new FormControl('');
   filteredIngredients: Observable<string[]>;
   ingredients: string[] = ['Uova'];
   allingredients: string[] = ['Uova', 'Latte', 'Burro', 'Olio EVO', 'Pollo'];
 
-  @ViewChild('fruitInput') fruitInput?: ElementRef<HTMLInputElement>;
+  @ViewChild('ingredientInput') ingredientInput?: ElementRef<HTMLInputElement>;
 
   announcer = inject(LiveAnnouncer);
 
@@ -78,7 +83,7 @@ export class RecipeAddComponent {
     this.dataServ
       .postRecipe(this.newRecipe)
       .subscribe((addedRecipe) => (this.recipe = addedRecipe));
-      this.router.navigateByUrl('/list')
+    this.router.navigateByUrl('/list');
   }
 
   add(event: MatChipInputEvent): void {
@@ -88,30 +93,30 @@ export class RecipeAddComponent {
     }
     event.chipInput!.clear();
 
-    this.fruitCtrl.setValue(null);
+    this.ingredientCtrl.setValue(null);
   }
 
-  remove(fruit: string): void {
-    const index = this.ingredients.indexOf(fruit);
+  remove(ingredient: string): void {
+    const index = this.ingredients.indexOf(ingredient);
 
     if (index >= 0) {
       this.ingredients.splice(index, 1);
 
-      this.announcer.announce(`Removed ${fruit}`);
+      this.announcer.announce(`Removed ${ingredient}`);
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
     this.ingredients.push(event.option.viewValue);
-    this.fruitInput!.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
+    this.ingredientInput!.nativeElement.value = '';
+    this.ingredientCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allingredients.filter((fruit) =>
-      fruit.toLowerCase().includes(filterValue)
+    return this.allingredients.filter((ingredient) =>
+      ingredient.toLowerCase().includes(filterValue)
     );
   }
 }

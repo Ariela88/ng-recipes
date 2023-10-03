@@ -6,6 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CategoryToStringPipe implements PipeTransform {
 
+  
+
   transform(value: number): string {
 
     const categoryStrings = [

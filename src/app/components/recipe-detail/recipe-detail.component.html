@@ -1,42 +1,58 @@
 <div *ngIf="recipe && !isEditing" class="card-container">
-
   <div class="img-container"> <img src="{{recipe.url}}" alt=""></div>
-  <div class="title-container"> <h1> {{recipe.name}}</h1></div>
-    <ul>
-      <li *ngFor="let ing of recipe.ingredients">{{ing}} </li>
-    </ul>
-    <div class="text-container">
-      <p>{{recipe.description}}</p>
-    </div>
-
-<div class="btn-container">
-      <mat-card-actions>
-        <button (click)="delete(recipe.id!)" mat-button color="primary">Elimina ricetta</button>
-        <button (click)="startEditing()" mat-button>Modifica ricetta</button>
-      </mat-card-actions>
+  <div class="title-container">
+    <h1> {{recipe.name}}</h1>
   </div>
- </div>
+  <ul>
+    <li *ngFor="let ing of recipe.ingredients">{{ing}} </li>
+  </ul>
+  <div class="text-container">
+    <p>{{recipe.description}}</p>
+  </div>
 
-<div *ngIf="recipe && isEditing">
-
-    <form>
-        <label for="name">Nome:</label>
-        <input [(ngModel)]="newRecipe.name" type="text" name="name">
-
-        <label for="description">Procedimento:</label>
-        <input [(ngModel)]="newRecipe.description" type="text" name="description">
-
-        <label for="url">Foto:</label>
-        <input [(ngModel)]="newRecipe.url" type="text" name="url">
-
-        <label for="category">Categoria:</label>
-        <input [(ngModel)]="newRecipe.category" type="number" name="category">
+  <div class="btn-container">
+    <mat-card-actions>
+      <button (click)="delete(recipe.id!)" mat-button color="primary">Elimina ricetta</button>
+      <button (click)="startEditing()" mat-button>Modifica ricetta</button>
+    </mat-card-actions>
+  </div>
+</div>
 
 
 
-        <mat-card-actions>
-            <button (click)="saveRecipe()" mat-button>Salva</button>
-            <button (click)="cancelEditing()" mat-button>Annulla</button>
-        </mat-card-actions>
-    </form>
+
+<div *ngIf="recipe && isEditing" class="editing-container">
+  <div class="form"> 
+
+  <mat-form-field>
+    <mat-label>Categoria</mat-label>
+    <mat-select placeholder="Seleziona Categoria" [(ngModel)]="newRecipe.category" name="category">
+      <mat-option *ngFor="let cat of categoryOptions" [value]="cat">
+        {{ cat | categoryToString }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-form-field">
+    <mat-label for="name">Nome:</mat-label>
+    <input matInput type="text" [(ngModel)]="newRecipe.name" name="name">
+
+  </mat-form-field>
+  <mat-form-field class="example-form-field">
+    <mat-label for="url">Immagine:</mat-label>
+    <input matInput type="text" [(ngModel)]="newRecipe.url" name="url">
+
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label for="description">Procedimento:</mat-label>
+    <textarea matInput placeholder="Scrivi qui il procedimento..." [(ngModel)]="newRecipe.description" type="text"
+      name="description"></textarea>
+  </mat-form-field>
+
+  <div class="btn-container"> 
+  <mat-card-actions>
+    <button (click)="saveRecipe()" mat-raised-button>Salva</button>
+    <button (click)="cancelEditing()" mat-raised-button>Annulla</button>
+  </mat-card-actions>
+</div>
+</div>
 </div>

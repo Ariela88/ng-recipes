@@ -1,7 +1,7 @@
 <div class="favourites-recipes-content">
 
     <div *ngFor="let recipe of favourites"  >
-      <app-card [recipeData]="recipe"  [isFavourite]="true" bColor="green"></app-card>
+      <app-card [recipeData]="recipe"  [isFavourite]="true" bColor="green" (recipeSelected)="openDetail($event)"></app-card>
     </div>
  
 
