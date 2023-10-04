@@ -51,6 +51,7 @@ export class RecipeDetailComponent implements OnInit {
     category: 0,
     url: '',
     isFavourite: false,
+    rating: 1
   };
 
   isEditing = false;
@@ -60,7 +61,7 @@ export class RecipeDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');

@@ -10,9 +10,9 @@ export class StorageService {
   favouritesSubject = new BehaviorSubject<Recipe[]>([]);
 
   constructor() {
-    
+
     if (localStorage.getItem('favourites')) {
-      
+
       this.favouritesSubject.next(JSON.parse(localStorage.getItem('favourites')!))
     }
   }
@@ -28,7 +28,7 @@ export class StorageService {
 
   removerecipe(recipe: Recipe) {
     recipe.isFavourite = false;
-   
+
     const actualArray = this.favouritesSubject.value;
     const newArray = actualArray.filter((p) => p.id !== recipe.id);
     this.favouritesSubject.next(newArray);
@@ -39,15 +39,15 @@ export class StorageService {
     if (this.isFavourite(recipe)) {
       this.removerecipe(recipe)
 
-    }else{
+    } else {
       this.saverecipe(recipe)
     }
   }
 
 
-  isFavourite(recipe: Recipe):boolean {
-    console.log('is favourite', recipe);
-    return this.favouritesSubject.value.some(r => r.id===recipe.id);
+  isFavourite(recipe: Recipe): boolean {
+
+    return this.favouritesSubject.value.some(r => r.id === recipe.id);
   }
 }
 

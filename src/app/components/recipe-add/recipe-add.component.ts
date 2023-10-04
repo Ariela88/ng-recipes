@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { DataService } from 'src/app/services/data.service';
-import { Recipe } from 'src/app/model/recipe';
+import { DishType, Recipe } from 'src/app/model/recipe';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -53,9 +53,10 @@ export class RecipeAddComponent {
     createdAt: 0,
     ingredients: [],
     description: '',
-    category: 0,
+    category: DishType.dessert,
     url: '',
     isFavourite: false,
+    rating: 1
   };
 
   constructor(private dataServ: DataService, private router: Router) {

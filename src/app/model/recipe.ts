@@ -5,8 +5,17 @@ export interface Recipe {
   name: string
   ingredients?: string[]
   description: string
-  category: number
+  category: DishType;
   id?: string;
   isFavourite:boolean;
+  rating:number;
 
+}
+
+export enum DishType{
+  antipasto,
+  primo,
+  secondo,
+  dessert,
+  cocktail
 }

@@ -4,28 +4,15 @@
 
 <div class="form-container">
   <form class="form">
-   
-      <mat-form-field>
-        <mat-label for="name">Nome:</mat-label>
-        <input matInput placeholder="Nome ricetta" [(ngModel)]="newRecipe.name" type="text" name="name">
-        <mat-icon matSuffix>close</mat-icon>
-
-      </mat-form-field>
-    
-
-
-
-  
-      <mat-form-field>
-        <mat-label for="url">Foto Ricetta:</mat-label>
-        <input matInput placeholder="Foto del piatto" [(ngModel)]="newRecipe.url" type="text" name="url">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-
-      </mat-form-field>
-    
-
-
+ <mat-form-field>
+      <mat-label for="name">Nome:</mat-label>
+      <input matInput placeholder="Nome ricetta" [(ngModel)]="newRecipe.name" type="text" name="name">
+ </mat-form-field>
     <mat-form-field>
+      <mat-label for="url">Foto Ricetta:</mat-label>
+      <input matInput placeholder="Foto del piatto" [(ngModel)]="newRecipe.url" type="text" name="url">
+ </mat-form-field>
+<mat-form-field>
       <mat-label>Categoria</mat-label>
       <mat-select placeholder="Seleziona Categoria" [(ngModel)]="newRecipe.category" name="category">
         <mat-option *ngFor="let cat of categoryOptions" [value]="cat">
@@ -60,7 +47,8 @@
     <p class="procediment">
       <mat-form-field class="example-full-width">
         <mat-label for="description">Procedimento</mat-label>
-        <textarea matInput [(ngModel)]="newRecipe.description" placeholder="Scrivi qui il procedimento" name="description"></textarea>
+        <textarea matInput [(ngModel)]="newRecipe.description" placeholder="Scrivi qui il procedimento"
+          name="description"></textarea>
       </mat-form-field>
 
     </p>
@@ -68,6 +56,3 @@
     <button mat-raised-button (click)="submitRecipe()">Invia</button>
 
   </form>
-
-
-  

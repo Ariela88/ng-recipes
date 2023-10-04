@@ -1,110 +1,106 @@
 .card {
-    max-width: 400px;
-  }
+  max-width: 400px;
+}
 
-  .header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+.header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
 
-  .header{
+.header {
 
-    width: 100%;
-    display: flex;
-    justify-content: center ;
-    margin-top: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 
-  }
-  .example-full-width {
-    width: 100%;
-  }
+}
 
-  h1{
-    font-size: 70px;
-     font-family: 'Satisfy', cursive;
+.example-full-width {
+  width: 100%;
+}
 
-  }
+h1 {
+  font-size: 70px;
+  font-family: 'Satisfy', cursive;
 
-  .example-chip-list {
-    width: 100%;
-  }
+}
 
-  .mat-card-actions span{
-    background-color: black !important;
-  }
+.example-chip-list {
+  width: 100%;
+}
 
-  .mdc-text-field--filled{
-    background-color: transparent !important;
-  }
+.mat-card-actions span {
+  background-color: black !important;
+}
 
-  .form-container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100%;
-  }
+.mdc-text-field--filled {
+  background-color: transparent !important;
+}
 
-  .form{
-    width: 500px;
-    
-    padding: 32px;
-    height: 600px;
-    display: flex;
-    flex-direction: column;
+.form-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
 
-  }
+.form {
+  width: 500px;
 
-  p{
-    text-align: center;
-  }
+  padding: 32px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
 
+}
 
-
-  .procediment{
-    width: 100%;
-
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .procediment input{
-    height: 100px;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-
-  }
-
-  section {
-    display: table;
-  }
-
-  .example-button-row {
-    display: table-cell;
-    max-width: 600px;
-  }
-
-  .example-button-row .mat-mdc-button-base {
-    margin: 8px 8px 8px 0;
-  }
-
-  .example-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-
-  .example-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
-  }
-
-  
+p {
+  text-align: center;
+}
 
 
+
+.procediment {
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.procediment input {
+  height: 100px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+}
+
+section {
+  display: table;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}

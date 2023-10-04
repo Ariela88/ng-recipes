@@ -1,36 +1,51 @@
 .card {
   width: 400px;
-    max-width: 400px;
-  }
+  max-width: 400px;
+  max-height: 450px;
 
-  .header-image {
+}
 
-    background-size: cover;
-  }
+.header-image {
 
-  mat-card{
-    background-color: burlywood !important;
-  }
+  background-size: cover;
+}
 
-  mat-card-title{
-    text-align: center;
-    font-size: 24px;
-    font-family: 'Satisfy', cursive;
-  }
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 80%;
+}
 
-  mat-icon{
-    color: black;
-  }
+.mat-mdc-form-field .mat-focused .mat-form-field-outline-thick {
+  color: lightblue !important;
+}
 
-  mat-card-actions{
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
 
-  
-button{
+
+mat-card {
+  background-color: rgb(242, 170, 76) !important;
+  max-height: 450px;
+}
+
+mat-card-title {
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Satisfy', cursive;
+}
+
+mat-icon {
+  color: black;
+}
+
+mat-card-actions {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+button {
 
   color: black !important;
   background-color: transparent;

@@ -1,36 +1,37 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { Recipe } from 'src/app/model/recipe';
-import {RouterModule } from '@angular/router';
-import {MatIconModule} from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 import { CategoryToStringPipe } from 'src/app/pipes/category-to-string.pipe';
 import { StorageService } from 'src/app/services/storage.service';
+import { RepeatDirective } from 'src/app/directives/repeat.directive';
 
 @Component({
   selector: 'app-card',
   standalone: true,
   imports: [CommonModule,
-            MatButtonModule,
-            MatCardModule,
-            RouterModule,
-            MatIconModule,
-            CategoryToStringPipe
-          ],
+    MatButtonModule,
+    MatCardModule,
+    RouterModule,
+    MatIconModule,
+    CategoryToStringPipe,
+    RepeatDirective],
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
 
-  constructor(public storage:StorageService){}
+  constructor(public storage: StorageService) { }
 
   @Input() recipeData?: Recipe;
   @Output() recipeSelected = new EventEmitter<Recipe>();
   @Input() isFavourite: boolean = false;
   @Input() bColor: string = 'white';
 
-  select(){
+  select() {
     this.recipeSelected.emit(this.recipeData);
   }
 

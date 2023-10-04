@@ -1,24 +1,28 @@
 <div *ngIf="recipeData" class="card" [ngStyle]="{backgroundColor: bColor}">
-    <mat-card >
-      <mat-card-header>
+  <mat-card>
+    <mat-card-header>
 
-        <mat-card-title>{{recipeData.name}}</mat-card-title>
-<mat-card-subtitle> {{recipeData.category | categoryToString}}</mat-card-subtitle>
-      </mat-card-header>
-      <img mat-card-image src="{{recipeData.url}}" alt="">
+      <mat-card-subtitle> {{recipeData.category | categoryToString}}</mat-card-subtitle>
+      <mat-card-title>{{recipeData.name}}
+        <mat-icon *appRepeat="recipeData.rating">star</mat-icon>
+      </mat-card-title>
 
-      <mat-card-actions>
-          <button (click)="select()" mat-icon-button>
-           <mat-icon> info </mat-icon>
-          </button>
-          <button (click)="storage.toggleFavourites(recipeData)">
-            <mat-icon *ngIf="!storage.isFavourite(recipeData)">favorite</mat-icon>
-            <mat-icon *ngIf="storage.isFavourite(recipeData)">heart_broken</mat-icon>
-          </button>
+    </mat-card-header>
+    <img mat-card-image src="{{recipeData.url}}" alt="">
+
+    <mat-card-actions>
+      <button (click)="select()" mat-icon-button>
+        <mat-icon> info </mat-icon>
+      </button>
+      <button (click)="storage.toggleFavourites(recipeData)">
+        <mat-icon *ngIf="!storage.isFavourite(recipeData)">favorite</mat-icon>
+        <mat-icon *ngIf="storage.isFavourite(recipeData)">heart_broken</mat-icon>
+      </button>
 
 
 
-      </mat-card-actions>
-    </mat-card>
 
-  </div>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

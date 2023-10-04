@@ -12,21 +12,22 @@ import { Router } from '@angular/router';
   templateUrl: './favourites.component.html',
   styleUrls: ['./favourites.component.scss'],
 })
-export class FavouritesComponent implements OnInit{
-  
+export class FavouritesComponent implements OnInit {
+
   favourites: Recipe[] = [];
 
-  constructor(private storage: StorageService, private route:Router) {}
+  constructor(private storage: StorageService, private route: Router) { }
+
   ngOnInit(): void {
     this.storage.favouritesSubject.subscribe((arrayOfFavourites) => {
       this.favourites = arrayOfFavourites;
-      console.log('preferiti')
+
     });
   }
 
-  openDetail(recipe: Recipe){
+  openDetail(recipe: Recipe) {
     this.route.navigateByUrl('/recipe/' + recipe.id);
-    console.log(recipe)
+
   }
 
 }

@@ -18,41 +18,38 @@
   </div>
 </div>
 
-
-
-
 <div *ngIf="recipe && isEditing" class="editing-container">
-  <div class="form"> 
+  <div class="form">
 
-  <mat-form-field>
-    <mat-label>Categoria</mat-label>
-    <mat-select placeholder="Seleziona Categoria" [(ngModel)]="newRecipe.category" name="category">
-      <mat-option *ngFor="let cat of categoryOptions" [value]="cat">
-        {{ cat | categoryToString }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="example-form-field">
-    <mat-label for="name">Nome:</mat-label>
-    <input matInput type="text" [(ngModel)]="newRecipe.name" name="name">
+    <mat-form-field>
+      <mat-label>Categoria</mat-label>
+      <mat-select placeholder="Seleziona Categoria" [(ngModel)]="newRecipe.category" name="category">
+        <mat-option *ngFor="let cat of categoryOptions" [value]="cat">
+          {{ cat | categoryToString }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-form-field">
+      <mat-label for="name">Nome:</mat-label>
+      <input matInput type="text" [(ngModel)]="newRecipe.name" name="name">
 
-  </mat-form-field>
-  <mat-form-field class="example-form-field">
-    <mat-label for="url">Immagine:</mat-label>
-    <input matInput type="text" [(ngModel)]="newRecipe.url" name="url">
+    </mat-form-field>
+    <mat-form-field class="example-form-field">
+      <mat-label for="url">Immagine:</mat-label>
+      <input matInput type="text" [(ngModel)]="newRecipe.url" name="url">
 
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label for="description">Procedimento:</mat-label>
-    <textarea matInput placeholder="Scrivi qui il procedimento..." [(ngModel)]="newRecipe.description" type="text"
-      name="description"></textarea>
-  </mat-form-field>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label for="description">Procedimento:</mat-label>
+      <textarea matInput placeholder="Scrivi qui il procedimento..." [(ngModel)]="newRecipe.description" type="text"
+        name="description"></textarea>
+    </mat-form-field>
 
-  <div class="btn-container"> 
-  <mat-card-actions>
-    <button (click)="saveRecipe()" mat-raised-button>Salva</button>
-    <button (click)="cancelEditing()" mat-raised-button>Annulla</button>
-  </mat-card-actions>
-</div>
-</div>
+    <div class="btn-container">
+      <mat-card-actions>
+        <button (click)="saveRecipe()" mat-raised-button>Salva</button>
+        <button (click)="cancelEditing()" mat-raised-button>Annulla</button>
+      </mat-card-actions>
+    </div>
+  </div>
 </div>

@@ -6,6 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 import { CategoryToStringPipe } from 'src/app/pipes/category-to-string.pipe';
+import { DishType, Recipe } from 'src/app/model/recipe';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-header',
@@ -17,24 +19,27 @@ import { CategoryToStringPipe } from 'src/app/pipes/category-to-string.pipe';
     MatIconModule,
     RouterModule,
     MatMenuModule,
-    CategoryToStringPipe,
+    CategoryToStringPipe
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: [CategoryToStringPipe],
 })
 export class HeaderComponent {
-  categories: string[];
-  constructor(
-    private categoryToStringPipe: CategoryToStringPipe,
-    private router: Router
-  ) {
-    this.categories = Array.from({ length: 6 }, (_, index) =>
-      this.categoryToStringPipe.transform(index)
-    );
-  }
+  recipes: Recipe[] = [];
+  categories?: DishType[];
+  recipe?:Recipe;
 
-  navigateToCategory(category: string) {
-    this.router.navigate(['/list'], { queryParams: { category: category } });
+  selectedCategory: string = '-1';
+
+  constructor(
+
+    private router: Router,
+    private data: DataService
+  ) { }
+
+  filter(category: string) {
+    const categoryNumber = parseInt(category, 10);
+    this.data.filterByCategory(categoryNumber);
+    console.log(categoryNumber);
   }
 }
