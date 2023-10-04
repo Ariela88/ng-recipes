@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Recipe } from 'src/app/model/recipe';
+import { DishType, Recipe } from 'src/app/model/recipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CardComponent } from '../card/card.component';
@@ -48,7 +48,7 @@ export class RecipeDetailComponent implements OnInit {
     createdAt: 0,
     ingredients: [],
     description: '',
-    category: 0,
+    category: DishType.antipasto,
     url: '',
     isFavourite: false,
     rating: 1

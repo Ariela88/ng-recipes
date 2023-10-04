@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DishType, Recipe } from '../model/recipe';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, catchError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class DataService {
   private allRecipes: Recipe[] = [];
   private filteredRecipesSubject: BehaviorSubject<Recipe[]> = new BehaviorSubject<Recipe[]>([]);
   filteredRecipes$: Observable<Recipe[]> = this.filteredRecipesSubject.asObservable();
-
+  selectedCategory: string = '-1';
   readonly DB_URL = "https://651a7a94340309952f0d59cb.mockapi.io/recipe";
 
   constructor(private http: HttpClient) {
@@ -47,15 +47,15 @@ export class DataService {
 
 
   filterByCategory(category: DishType) {
-
-    if (this.selectedCategorie === '-1') {
+    if (category === DishType['tutti']) {
       this.filteredRecipesSubject.next(this.allRecipes);
     } else {
-      const categoryNumber = parseInt(this.selectedCategorie);
-      const filteredRecipes = this.allRecipes.filter(recipe => recipe.category === categoryNumber);
+      const filteredRecipes = this.allRecipes.filter(recipe => recipe.category === category);
       this.filteredRecipesSubject.next(filteredRecipes);
     }
   }
+
+
 
 
 }

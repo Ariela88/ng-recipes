@@ -2,9 +2,9 @@
   <mat-card>
     <mat-card-header>
 
-      <mat-card-subtitle> {{recipeData.category | categoryToString}}</mat-card-subtitle>
+      <mat-card-subtitle *ngIf="recipeData" > {{recipeData.category | categoryToString}}</mat-card-subtitle> <mat-icon *appRepeat="recipeData.rating">star</mat-icon>
       <mat-card-title>{{recipeData.name}}
-        <mat-icon *appRepeat="recipeData.rating">star</mat-icon>
+       
       </mat-card-title>
 
     </mat-card-header>

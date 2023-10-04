@@ -53,7 +53,7 @@ export class RecipeAddComponent {
     createdAt: 0,
     ingredients: [],
     description: '',
-    category: DishType.dessert,
+    category: DishType.antipasto,
     url: '',
     isFavourite: false,
     rating: 1

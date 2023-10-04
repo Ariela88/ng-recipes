@@ -1,6 +1,24 @@
 <mat-toolbar color="primary">
-
+  <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/new">
+      Aggiungi ricetta
+    </button>
+    <button mat-menu-item routerLink="/favourites">Vai alla pagina dei preferiti</button>
+  </mat-menu>
   <span routerLink="/list" class="home-link">Angular Recipes</span>
+  <span class="spacer"></span>
+  <mat-form-field>
+    <mat-label>Filtra per categoria</mat-label>
+    <mat-select [(value)]="selectedCategory" (valueChange)="filter()">
+      <mat-option value="-1">
+        tutti
+      </mat-option>
+      <mat-option value="{{el[1]}}" *ngFor="let el of categories">
+        {{el[0]}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
   <span class="spacer"></span>
   <button mat-icon-button routerLink="/new">
     <mat-icon>add_box</mat-icon>
@@ -8,29 +26,5 @@
   <button mat-icon-button routerLink="/favourites">
     <mat-icon>favorite</mat-icon>
   </button>
-  <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/new">
-      Aggiungi ricetta
-    </button>
-
-
-    <mat-menu #categoryMenu="matMenu">
-      <button mat-menu-item *ngFor="let category of categories" (click)="filter(category)">
-        {{ category }}
-      </button>
-    </mat-menu>
-
-
-    <button mat-menu-item [matMenuTriggerFor]="categoryMenu">
-      Categorie
-    </button>
-
-
-
-    <button mat-menu-item routerLink="/favourites">Vai alla pagina dei preferiti</button>
-  </mat-menu>
-
-
 
 </mat-toolbar>

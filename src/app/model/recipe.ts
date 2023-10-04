@@ -17,5 +17,6 @@ export enum DishType{
   primo,
   secondo,
   dessert,
-  cocktail
+  cocktail,
+  tutti = -1
 }

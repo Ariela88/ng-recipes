@@ -8,6 +8,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CategoryToStringPipe } from 'src/app/pipes/category-to-string.pipe';
 import { DishType, Recipe } from 'src/app/model/recipe';
 import { DataService } from 'src/app/services/data.service';
+import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-header',
@@ -19,17 +21,24 @@ import { DataService } from 'src/app/services/data.service';
     MatIconModule,
     RouterModule,
     MatMenuModule,
-    CategoryToStringPipe
+    CategoryToStringPipe,
+    MatFormFieldModule,
+    MatSelectModule
+
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  allRecipes: Recipe[] = [];
   recipes: Recipe[] = [];
-  categories?: DishType[];
-  recipe?:Recipe;
-
   selectedCategory: string = '-1';
+  recipe?:Recipe;
+  categories = Object.entries(DishType).slice(Object.entries(DishType).length/2);
+  
+
+
+  
 
   constructor(
 
@@ -37,9 +46,7 @@ export class HeaderComponent {
     private data: DataService
   ) { }
 
-  filter(category: string) {
-    const categoryNumber = parseInt(category, 10);
-    this.data.filterByCategory(categoryNumber);
-    console.log(categoryNumber);
+  filter() {
+    this.data.filterByCategory(parseInt(this.selectedCategory));
   }
 }
