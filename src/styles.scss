@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-background-image: url(./assets/pattern.jpg);
+background-image: url(./assets/bg2.jpg);
 background-size: cover;
 background-attachment: fixed;}
 
 
 .mdc-text-field{
-    background-color: transparent !important;
+    background-color:  rgba(255, 68, 0, 0.67) !important;
     margin-top: 12px;
-    
+    color: white !important;
+
 }
 
 .mat-mdc-select-value{

@@ -35,10 +35,10 @@ export class HeaderComponent {
   selectedCategory: string = '-1';
   recipe?:Recipe;
   categories = Object.entries(DishType).slice(Object.entries(DishType).length/2);
-  
 
 
-  
+
+
 
   constructor(
 
